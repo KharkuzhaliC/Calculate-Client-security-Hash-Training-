@@ -1,11 +1,11 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Launch_SHA1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Launch_SHA1" this:Launch_SHA1.Iteration="1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="SHA1_Webpage browser input" Name="SHA1_BrowserTab" Type="InArgument(ui:Browser)">
       <x:Property.Attributes>
         <RequiredArgumentAttribute />
       </x:Property.Attributes>
     </x:Property>
-    <x:Property sap2010:Annotation.AnnotationText="Hash_Result generated in SHA1 Webpage by using input Cilent_Info" Name="Hash_Result" Type="OutArgument(x:String)">
+    <x:Property sap2010:Annotation.AnnotationText="Hash_Result generated in SHA1 Webpage by using input Cilent_Info" Name="Hash_Result" Type="InArgument(x:String)">
       <x:Property.Attributes>
         <RequiredArgumentAttribute />
       </x:Property.Attributes>
@@ -20,16 +20,13 @@
         <RequiredArgumentAttribute />
       </x:Property.Attributes>
     </x:Property>
-    <x:Property sap2010:Annotation.AnnotationText="Datatable obtained from read range activity " Name="Updated_DataTable" Type="OutArgument(sd:DataTable)">
-      <x:Property.Attributes>
-        <RequiredArgumentAttribute />
-      </x:Property.Attributes>
-    </x:Property>
+    <x:Property sap2010:Annotation.AnnotationText="Hash Code from SHA1 webpage" Name="Hash_Code" Type="OutArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Loop Througn each row" Name="Iteration" Type="InArgument(x:Int32)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>993,3578</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>993,3052</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Launch_SHA1_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="64">
@@ -101,12 +98,12 @@
       <AssemblyReference>Calculate Client Security Hash</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Module developed to get the Hash_Code from SHA1 Website" DisplayName="SHA1_GetHashCode" sap:VirtualizedContainerService.HintSize="1003,3513" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Module developed to get the Hash_Code from SHA1 Website" DisplayName="SHA1_GetHashCode" sap:VirtualizedContainerService.HintSize="1003,2987" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="IsValid" />
-      <Variable x:TypeArguments="x:Int32" Default="1" Name="Iteration" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -114,7 +111,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="961,3390" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="SHA1_GetHashCode-Try Catch" sap:VirtualizedContainerService.HintSize="961,2864" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -122,20 +119,20 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence sap:VirtualizedContainerService.HintSize="923,3141" sap2010:WorkflowViewState.IdRef="Sequence_32">
+        <Sequence DisplayName="SAH1_GetHashCode" sap:VirtualizedContainerService.HintSize="923,2609" sap2010:WorkflowViewState.IdRef="Sequence_32">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="881,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;SHA1_GetHashCode Started&quot;]" />
-          <Sequence DisplayName="SHA1_GetHashCode" sap:VirtualizedContainerService.HintSize="881,2918" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="881,93" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;SHA1_GetHashCode Started&quot;]" />
+          <Sequence DisplayName="SHA1_GetHashCode" sap:VirtualizedContainerService.HintSize="881,2384" sap2010:WorkflowViewState.IdRef="Sequence_9">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence sap2010:Annotation.AnnotationText="Validating wheather the Launched Page is the Required SHA1 Login Page." DisplayName="Page validation" sap:VirtualizedContainerService.HintSize="839,834" sap2010:WorkflowViewState.IdRef="Sequence_14">
+            <Sequence sap2010:Annotation.AnnotationText="Validating wheather the Launched Page is the Required SHA1 Login Page." DisplayName="Page validation" sap:VirtualizedContainerService.HintSize="839,838" sap2010:WorkflowViewState.IdRef="Sequence_14">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -171,246 +168,194 @@
                   </ActivityAction>
                 </ui:BrowserScope.Body>
               </ui:BrowserScope>
-              <If Condition="[IsValid]" DisplayName="Page Validation" sap:VirtualizedContainerService.HintSize="797,403" sap2010:WorkflowViewState.IdRef="If_4">
+              <If Condition="[IsValid]" DisplayName="Page Validation" sap:VirtualizedContainerService.HintSize="797,407" sap2010:WorkflowViewState.IdRef="If_4">
                 <If.Then>
-                  <Sequence sap:VirtualizedContainerService.HintSize="376,183" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                  <Sequence sap:VirtualizedContainerService.HintSize="376,185" sap2010:WorkflowViewState.IdRef="Sequence_12">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Trace" Message="[&quot;SHA1 Launch Page Validation Success&quot;]" />
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Trace" Message="[&quot;SHA1 Launch Page Validation Success&quot;]" />
                   </Sequence>
                 </If.Then>
                 <If.Else>
-                  <Sequence sap:VirtualizedContainerService.HintSize="376,245" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <Sequence sap:VirtualizedContainerService.HintSize="376,247" sap2010:WorkflowViewState.IdRef="Sequence_13">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Error" Message="[&quot;SHA1 Launch Page Validation Failed&quot;]" />
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Error" Message="[&quot;SHA1 Launch Page Validation Failed&quot;]" />
                     <Throw Exception="[New BusinessRuleException(&quot;SHA1 Launch Page Validation Failed&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
                   </Sequence>
                 </If.Else>
               </If>
             </Sequence>
-            <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="Looping Each Row in the updated Datatable to get the corresponding Hash_Code" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="839,1952" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[Folder_Path]">
-              <ui:ExcelApplicationScope.Body>
-                <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-                  <ActivityAction.Argument>
-                    <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-                  </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="650,1812" sap2010:WorkflowViewState.IdRef="Sequence_23">
+            <Sequence sap2010:Annotation.AnnotationText="Get_HashCode From SHA1 Webpage by using Client_Info as input" sap:VirtualizedContainerService.HintSize="839,1414" sap2010:WorkflowViewState.IdRef="Sequence_30">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="532,990" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <TryCatch.Try>
+                  <Sequence DisplayName="Get_HashCode" sap:VirtualizedContainerService.HintSize="494,758" sap2010:WorkflowViewState.IdRef="Sequence_28">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:ExcelReadRange AddHeaders="True" DataTable="[Updated_DataTable]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="608,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="[Folder_Sheet]">
-                      <ui:ExcelReadRange.Range>
-                        <InArgument x:TypeArguments="x:String">
-                          <Literal x:TypeArguments="x:String" Value="" />
-                        </InArgument>
-                      </ui:ExcelReadRange.Range>
-                    </ui:ExcelReadRange>
-                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[Updated_DataTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="608,1621" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
-                      <ui:ForEachRow.Body>
-                        <ActivityAction x:TypeArguments="sd:DataRow">
+                    <ui:BrowserScope BrowserType="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[SHA1_BrowserTab]" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="452,666" sap2010:WorkflowViewState.IdRef="BrowserScope_3">
+                      <ui:BrowserScope.Body>
+                        <ActivityAction x:TypeArguments="x:Object">
                           <ActivityAction.Argument>
-                            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                           </ActivityAction.Argument>
-                          <Sequence sap2010:Annotation.AnnotationText="Get_HashCode From SHA1 Webpage by using Client_Info as input" sap:VirtualizedContainerService.HintSize="574,1502" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                          <Sequence DisplayName="Get_HashCode" sap:VirtualizedContainerService.HintSize="418,558" sap2010:WorkflowViewState.IdRef="Sequence_29">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="532,985" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                            <Sequence DisplayName="Get Hash Code" sap:VirtualizedContainerService.HintSize="376,466" sap2010:WorkflowViewState.IdRef="Sequence_24">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <TryCatch.Try>
-                                <Sequence DisplayName="Get_HashCode" sap:VirtualizedContainerService.HintSize="494,758" sap2010:WorkflowViewState.IdRef="Sequence_28">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ui:BrowserScope BrowserType="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[SHA1_BrowserTab]" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="452,666" sap2010:WorkflowViewState.IdRef="BrowserScope_3">
-                                    <ui:BrowserScope.Body>
-                                      <ActivityAction x:TypeArguments="x:Object">
-                                        <ActivityAction.Argument>
-                                          <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                                        </ActivityAction.Argument>
-                                        <Sequence DisplayName="Get_HashCode" sap:VirtualizedContainerService.HintSize="418,558" sap2010:WorkflowViewState.IdRef="Sequence_29">
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                          <Sequence DisplayName="Get Hash Code" sap:VirtualizedContainerService.HintSize="376,466" sap2010:WorkflowViewState.IdRef="Sequence_24">
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Hash the Client Details" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,96" sap2010:WorkflowViewState.IdRef="TypeInto_2" SimulateType="True" Text="[CurrentRow(&quot;Hash_Result&quot;).ToString]">
-                                              <ui:TypeInto.Target>
-                                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2f9e16f1-594a-4d54-9584-40cafaf6d7e3" Selector="&lt;webctrl tag='INPUT' id='textToHashId' name='textToHash' type='text' /&gt;">
-                                                  <ui:Target.TimeoutMS>
-                                                    <InArgument x:TypeArguments="x:Int32" />
-                                                  </ui:Target.TimeoutMS>
-                                                  <ui:Target.WaitForReady>
-                                                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                                                  </ui:Target.WaitForReady>
-                                                </ui:Target>
-                                              </ui:TypeInto.Target>
-                                            </ui:TypeInto>
-                                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Hash Button" sap:VirtualizedContainerService.HintSize="334,68" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
-                                              <ui:Click.CursorPosition>
-                                                <ui:CursorPosition Position="Center">
-                                                  <ui:CursorPosition.OffsetX>
-                                                    <InArgument x:TypeArguments="x:Int32" />
-                                                  </ui:CursorPosition.OffsetX>
-                                                  <ui:CursorPosition.OffsetY>
-                                                    <InArgument x:TypeArguments="x:Int32" />
-                                                  </ui:CursorPosition.OffsetY>
-                                                </ui:CursorPosition>
-                                              </ui:Click.CursorPosition>
-                                              <ui:Click.Target>
-                                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cc427922-e8a2-4998-9fbe-684f88dd699b" Selector="&lt;webctrl tag='INPUT' type='submit' aaname='hash' /&gt;">
-                                                  <ui:Target.TimeoutMS>
-                                                    <InArgument x:TypeArguments="x:Int32" />
-                                                  </ui:Target.TimeoutMS>
-                                                  <ui:Target.WaitForReady>
-                                                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                                                  </ui:Target.WaitForReady>
-                                                </ui:Target>
-                                              </ui:Click.Target>
-                                            </ui:Click>
-                                            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Hash Result" sap:VirtualizedContainerService.HintSize="334,68" sap2010:WorkflowViewState.IdRef="GetValue_2">
-                                              <ui:GetValue.Target>
-                                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8f6e648f-2c49-477c-b8a1-1aedd3f653f3" Selector="&lt;html title='SHA1 online' /&gt;&lt;webctrl tag='SPAN' css-selector='body&amp;gt;div&amp;gt;p&amp;gt;span' /&gt;" WaitForReady="COMPLETE">
-                                                  <ui:Target.TimeoutMS>
-                                                    <InArgument x:TypeArguments="x:Int32" />
-                                                  </ui:Target.TimeoutMS>
-                                                </ui:Target>
-                                              </ui:GetValue.Target>
-                                              <ui:GetValue.Value>
-                                                <OutArgument x:TypeArguments="x:String">[Hash_Result]</OutArgument>
-                                              </ui:GetValue.Value>
-                                            </ui:GetValue>
-                                            <ui:GoBack Browser="{x:Null}" DisplayName="Go Back" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="GoBack_2" />
-                                          </Sequence>
-                                        </Sequence>
-                                      </ActivityAction>
-                                    </ui:BrowserScope.Body>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:BrowserScope>
-                                </Sequence>
-                              </TryCatch.Try>
-                              <TryCatch.Catches>
-                                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="498,21" sap2010:WorkflowViewState.IdRef="Catch`1_6">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ActivityAction x:TypeArguments="s:Exception">
-                                    <ActivityAction.Argument>
-                                      <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-                                    </ActivityAction.Argument>
-                                    <Sequence sap:VirtualizedContainerService.HintSize="376,245" sap2010:WorkflowViewState.IdRef="Sequence_31">
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Error" Message="[&quot;Get_hashCode From SHA1 Failed&quot;]" />
-                                      <Throw Exception="[New BusinessRuleException(&quot;Get_hashCode From SHA1 Failed&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_6" />
-                                    </Sequence>
-                                  </ActivityAction>
-                                </Catch>
-                              </TryCatch.Catches>
-                            </TryCatch>
-                            <Sequence sap2010:Annotation.AnnotationText="Validating whether the generated Hash_result is Empty or Not" DisplayName="Post Hash Result Validation" sap:VirtualizedContainerService.HintSize="532,123" sap2010:WorkflowViewState.IdRef="Sequence_19">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <If Condition="[String.IsNullOrEmpty(Hash_result)]" DisplayName="Hash_Result Validation" sap:VirtualizedContainerService.HintSize="797,407" sap2010:WorkflowViewState.IdRef="If_5">
-                                <If.Then>
-                                  <Sequence sap:VirtualizedContainerService.HintSize="376,247" sap2010:WorkflowViewState.IdRef="Sequence_20">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Error" Message="[&quot;Hash_Result Validation failed&quot;]" />
-                                    <Throw Exception="[New BusinessRuleException(&quot;Hash_Result Validation failed&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_4" />
-                                  </Sequence>
-                                </If.Then>
-                                <If.Else>
-                                  <Sequence sap:VirtualizedContainerService.HintSize="376,185" sap2010:WorkflowViewState.IdRef="Sequence_21">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Trace" Message="[&quot;Hash_Result Validation Success&quot;]" />
-                                  </Sequence>
-                                </If.Else>
-                              </If>
+                              <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Hash the Client Details" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,96" sap2010:WorkflowViewState.IdRef="TypeInto_2" SimulateType="True" Text="[Hash_Result]">
+                                <ui:TypeInto.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2f9e16f1-594a-4d54-9584-40cafaf6d7e3" Selector="&lt;webctrl tag='INPUT' id='textToHashId' name='textToHash' type='text' /&gt;">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                    <ui:Target.WaitForReady>
+                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                    </ui:Target.WaitForReady>
+                                  </ui:Target>
+                                </ui:TypeInto.Target>
+                              </ui:TypeInto>
+                              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Hash Button" sap:VirtualizedContainerService.HintSize="334,68" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                <ui:Click.CursorPosition>
+                                  <ui:CursorPosition Position="Center">
+                                    <ui:CursorPosition.OffsetX>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:CursorPosition.OffsetX>
+                                    <ui:CursorPosition.OffsetY>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:CursorPosition.OffsetY>
+                                  </ui:CursorPosition>
+                                </ui:Click.CursorPosition>
+                                <ui:Click.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cc427922-e8a2-4998-9fbe-684f88dd699b" Selector="&lt;webctrl tag='INPUT' type='submit' aaname='hash' /&gt;">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                    <ui:Target.WaitForReady>
+                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                    </ui:Target.WaitForReady>
+                                  </ui:Target>
+                                </ui:Click.Target>
+                              </ui:Click>
+                              <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Hash Code" sap:VirtualizedContainerService.HintSize="334,68" sap2010:WorkflowViewState.IdRef="GetValue_2">
+                                <ui:GetValue.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8f6e648f-2c49-477c-b8a1-1aedd3f653f3" Selector="&lt;html title='SHA1 online' /&gt;&lt;webctrl tag='SPAN' css-selector='body&amp;gt;div&amp;gt;p&amp;gt;span' /&gt;" WaitForReady="COMPLETE">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                  </ui:Target>
+                                </ui:GetValue.Target>
+                                <ui:GetValue.Value>
+                                  <OutArgument x:TypeArguments="x:String">[Hash_Code]</OutArgument>
+                                </ui:GetValue.Value>
+                              </ui:GetValue>
+                              <ui:GoBack Browser="{x:Null}" DisplayName="Go Back" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="GoBack_2" />
                             </Sequence>
-                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="532,91" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;SHA1_GetHashCode Ended&quot;]" />
-                            <Assign sap:VirtualizedContainerService.HintSize="532,60" sap2010:WorkflowViewState.IdRef="Assign_2">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:Int32">[Iteration]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:Int32">[Iteration+1]</InArgument>
-                              </Assign.Value>
-                            </Assign>
                           </Sequence>
                         </ActivityAction>
-                      </ui:ForEachRow.Body>
+                      </ui:BrowserScope.Body>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                    </ui:ForEachRow>
+                    </ui:BrowserScope>
                   </Sequence>
-                </ActivityAction>
-              </ui:ExcelApplicationScope.Body>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:ExcelApplicationScope>
+                </TryCatch.Try>
+                <TryCatch.Catches>
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="498,22" sap2010:WorkflowViewState.IdRef="Catch`1_6">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ActivityAction x:TypeArguments="s:Exception">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                      </ActivityAction.Argument>
+                      <Sequence sap:VirtualizedContainerService.HintSize="376,247" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Error" Message="[&quot;Get_hashCode From SHA1 Failed&quot;]" />
+                        <Throw Exception="[New BusinessRuleException(&quot;Get_hashCode From SHA1 Failed&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_6" />
+                      </Sequence>
+                    </ActivityAction>
+                  </Catch>
+                </TryCatch.Catches>
+              </TryCatch>
+              <Sequence sap2010:Annotation.AnnotationText="Validating whether the generated Hash_result is Empty or Not" DisplayName="Post Hash Result Validation" sap:VirtualizedContainerService.HintSize="532,128" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If Condition="[String.IsNullOrEmpty(Hash_result)]" DisplayName="Hash_Result Validation" sap:VirtualizedContainerService.HintSize="797,407" sap2010:WorkflowViewState.IdRef="If_5">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="376,247" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Error" Message="[&quot;Hash_Result Validation failed&quot;]" />
+                      <Throw Exception="[New BusinessRuleException(&quot;Hash_Result Validation failed&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_4" />
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap:VirtualizedContainerService.HintSize="376,185" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Trace" Message="[&quot;Hash_Result Validation Success&quot;]" />
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="532,93" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;SHA1_GetHashCode Ended&quot;]" />
+            </Sequence>
           </Sequence>
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="927,21" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="927,22" sap2010:WorkflowViewState.IdRef="Catch`1_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -421,18 +366,18 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence sap:VirtualizedContainerService.HintSize="376,245" sap2010:WorkflowViewState.IdRef="Sequence_22">
+            <Sequence sap:VirtualizedContainerService.HintSize="376,247" sap2010:WorkflowViewState.IdRef="Sequence_22">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Error" Message="[&quot;SHA1_GetHashCode Failed&quot;]" />
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Error" Message="[&quot;SHA1_GetHashCode Failed&quot;]" />
               <Throw Exception="[New BusinessRuleException(&quot;SHA1_GetHashCode Failed&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_5" />
             </Sequence>
           </ActivityAction>
         </Catch>
-        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="927,21" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="927,22" sap2010:WorkflowViewState.IdRef="Catch`1_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>

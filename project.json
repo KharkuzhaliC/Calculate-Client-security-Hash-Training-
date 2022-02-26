@@ -1,13 +1,15 @@
 {
   "name": "Client Security Hash Integration",
   "description": "Blank Process",
-  "main": "Main.xaml",
+  "main": "Client Security Hash.xaml",
   "dependencies": {
-    "Calculate.Client.Security.Hash": "[1.0.7]",
+    "Calculate.Client.Security.Hash": "[1.0.11]",
+    "Element5.Core": "1.2.25",
     "UiPath.Excel.Activities": "[2.11.4]",
     "UiPath.Mail.Activities": "[1.12.3]",
     "UiPath.System.Activities": "[21.10.4]",
-    "UiPath.UIAutomation.Activities": "[21.10.5]"
+    "UiPath.UIAutomation.Activities": "[21.10.5]",
+    "UiPath.WebAPI.Activities": "[1.9.3-preview]"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -46,8 +48,8 @@
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
     {
-      "filePath": "Main.xaml",
-      "uniqueId": "7c3896b4-ebcd-46fa-ac06-a9485247ecfa",
+      "filePath": "Client Security Hash.xaml",
+      "uniqueId": "64b7bb2c-e84f-4ccc-aae8-f28aa5d8110b",
       "input": [],
       "output": []
     }

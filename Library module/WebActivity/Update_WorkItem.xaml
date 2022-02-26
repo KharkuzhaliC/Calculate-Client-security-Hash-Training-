@@ -15,12 +15,7 @@
         <RequiredArgumentAttribute />
       </x:Property.Attributes>
     </x:Property>
-    <x:Property sap2010:Annotation.AnnotationText="WI type required" Name="Type" Type="InArgument(x:String)">
-      <x:Property.Attributes>
-        <RequiredArgumentAttribute />
-      </x:Property.Attributes>
-    </x:Property>
-    <x:Property sap2010:Annotation.AnnotationText="Hash_Result generated in SHA1 Webpage by using input Cilent_Info" Name="Hash_Result" Type="InArgument(x:String)">
+    <x:Property sap2010:Annotation.AnnotationText="Hash_Result generated in SHA1 Webpage by using input Cilent_Info" Name="Hash_Code" Type="InArgument(x:String)">
       <x:Property.Attributes>
         <RequiredArgumentAttribute />
       </x:Property.Attributes>
@@ -29,7 +24,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1191,3759</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1191,3313</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Update_WorkItem_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -100,10 +95,9 @@
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Module developed to Update ACME work Items" DisplayName="Update_WorkItem" sap:VirtualizedContainerService.HintSize="1201,3694" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Module developed to Update ACME work Items" DisplayName="Update_WorkItem" sap:VirtualizedContainerService.HintSize="1201,3248" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="Iteration" />
     </Sequence.Variables>
@@ -113,7 +107,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1159,3571" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1159,3125" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -121,21 +115,21 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Update_WorkItems" sap:VirtualizedContainerService.HintSize="1121,3316" sap2010:WorkflowViewState.IdRef="Sequence_28">
+        <Sequence DisplayName="Update_WorkItems" sap:VirtualizedContainerService.HintSize="1121,2870" sap2010:WorkflowViewState.IdRef="Sequence_28">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1079,93" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Update_WorkItems Started&quot;]" />
-          <Sequence sap2010:Annotation.AnnotationText="Hash_result Validation" DisplayName="Hash_Result Validation" sap:VirtualizedContainerService.HintSize="1079,2958" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <Sequence sap2010:Annotation.AnnotationText="Hash_result Validation" DisplayName="Hash_Result Validation" sap:VirtualizedContainerService.HintSize="1079,2512" sap2010:WorkflowViewState.IdRef="Sequence_8">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If sap2010:Annotation.AnnotationText="Checking whether the generated Hash_Result is Empty or Not" Condition="[IsNothing(Hash_Result)]" sap:VirtualizedContainerService.HintSize="1037,438" sap2010:WorkflowViewState.IdRef="If_2">
+            <If sap2010:Annotation.AnnotationText="Checking whether the generated Hash_Result is Empty or Not" Condition="[IsNothing(Hash_Code)]" sap:VirtualizedContainerService.HintSize="1037,438" sap2010:WorkflowViewState.IdRef="If_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -163,48 +157,25 @@
                 </Sequence>
               </If.Else>
             </If>
-            <Sequence DisplayName="Navigate to WorkItems" sap:VirtualizedContainerService.HintSize="1037,2357" sap2010:WorkflowViewState.IdRef="Sequence_37">
+            <Sequence DisplayName="Navigate to WorkItems" sap:VirtualizedContainerService.HintSize="1037,1911" sap2010:WorkflowViewState.IdRef="Sequence_37">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:BrowserScope BrowserType="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[ACME_BrowserTab]" DisplayName="Attach Browser " sap:VirtualizedContainerService.HintSize="995,2265" sap2010:WorkflowViewState.IdRef="BrowserScope_2">
+              <ui:BrowserScope BrowserType="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[ACME_BrowserTab]" DisplayName="Attach Browser " sap:VirtualizedContainerService.HintSize="995,1819" sap2010:WorkflowViewState.IdRef="BrowserScope_2">
                 <ui:BrowserScope.Body>
                   <ActivityAction x:TypeArguments="x:Object">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Navigate to Work Item" sap:VirtualizedContainerService.HintSize="961,2157" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                    <Sequence DisplayName="Navigate to Work Item" sap:VirtualizedContainerService.HintSize="961,1711" sap2010:WorkflowViewState.IdRef="Sequence_36">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To" sap:VirtualizedContainerService.HintSize="919,59" sap2010:WorkflowViewState.IdRef="NavigateTo_3" Url="[URL+&quot;work-items/&quot;+WIID.ToString]" />
-                      <If Condition="[Type=&quot;WI5&quot;]" sap:VirtualizedContainerService.HintSize="919,406" sap2010:WorkflowViewState.IdRef="If_4">
-                        <If.Then>
-                          <Sequence sap:VirtualizedContainerService.HintSize="376,185" sap2010:WorkflowViewState.IdRef="Sequence_30">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;WI is of the required  Type&quot;]" />
-                          </Sequence>
-                        </If.Then>
-                        <If.Else>
-                          <Sequence sap:VirtualizedContainerService.HintSize="376,247" sap2010:WorkflowViewState.IdRef="Sequence_31">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Error" Message="[&quot;WI is not of the required  Type&quot;]" />
-                            <Throw Exception="[New BusinessRuleException(&quot;WI is not of the required  Type&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_6" />
-                          </Sequence>
-                        </If.Else>
-                      </If>
                       <TryCatch sap2010:Annotation.AnnotationText="Navigate to WorkItem update and add the Hash_result in comments section, change status to completed" DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="919,1520" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -221,7 +192,7 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To" sap:VirtualizedContainerService.HintSize="839,59" sap2010:WorkflowViewState.IdRef="NavigateTo_4" Url="[URL+&quot;work-items/update/&quot;+WIID.ToString]" />
-                            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Hash_result" sap:VirtualizedContainerService.HintSize="839,96" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[Hash_Result]">
+                            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Hash_result" sap:VirtualizedContainerService.HintSize="839,96" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[Hash_Code]">
                               <ui:TypeInto.Target>
                                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="97d4ed11-1bef-4b51-af4d-6565121681a9" Selector="&lt;html title='ACME System 1' /&gt;&lt;webctrl tag='TEXTAREA' /&gt;">
                                   <ui:Target.TimeoutMS>
@@ -322,7 +293,7 @@
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <If Condition="[IsNothing(Hash_Result)]" sap:VirtualizedContainerService.HintSize="797,406" sap2010:WorkflowViewState.IdRef="If_5">
+                              <If Condition="[IsNothing(Hash_Code)]" sap:VirtualizedContainerService.HintSize="797,406" sap2010:WorkflowViewState.IdRef="If_5">
                                 <If.Then>
                                   <Sequence sap:VirtualizedContainerService.HintSize="376,247" sap2010:WorkflowViewState.IdRef="Sequence_32">
                                     <sap:WorkflowViewStateService.ViewState>
@@ -366,7 +337,7 @@
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Error" Message="[&quot;Hash_result and Status Updation failed&quot;]" />
+                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Error" Message="[&quot;Hash_result and Status Updation failed&quot;]" />
                                 <Throw Exception="[New BusinessRuleException(&quot;Hash_result and Status Updation failed&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_8" />
                               </Sequence>
                             </ActivityAction>
@@ -406,7 +377,7 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Error" Message="[&quot;Update_Work Items Failed&quot;]" />
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Error" Message="[&quot;Update_Work Items Failed&quot;]" />
               <Throw Exception="[New BusinessRuleException(&quot;Update_Work Items Failed&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Throw_5" />
             </Sequence>
           </ActivityAction>
